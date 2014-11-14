@@ -1,0 +1,56 @@
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\Bin\Debug\Assets\ApplicationIcon.png
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\FlipCycleTileLarge.png
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\FlipCycleTileSmall.png
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\IconicTileMediumLarge.png
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\IconicTileSmall.png
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\Bin\Debug\Photochooser.dll
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\Bin\Debug\Photochooser.pdb
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\Bin\Debug\AppManifest.xaml
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\Bin\Debug\Photochooser_Debug_AnyCPU.xap
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\obj\Debug\App.g.cs
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\obj\Debug\MainPage.g.cs
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\obj\Debug\Photochooser.g.resources
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\obj\Debug\Photochooser.Resources.AppResources.resources
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\obj\Debug\Photochooser.csproj.GenerateResource.Cache
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\obj\Debug\Photochooser.dll
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\obj\Debug\Photochooser.pdb
+C:\Users\chetan\Documents\Visual Studio 2012\tutorials\Photochooser\Photochooser\obj\Debug\XapCacheFile.xml
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\Assets\ApplicationIcon.png
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\FlipCycleTileLarge.png
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\FlipCycleTileSmall.png
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\IconicTileMediumLarge.png
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\IconicTileSmall.png
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\Photochooser.dll
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\Photochooser.pdb
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\AppManifest.xaml
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\Properties\WMAppManifest.xml
+\\psf\Home\Downloads\Photochooser\Photochooser\Bin\Debug\Photochooser_Debug_AnyCPU.xap
+\\psf\Home\Downloads\Photochooser\Photochooser\obj\Debug\App.g.cs
+\\psf\Home\Downloads\Photochooser\Photochooser\obj\Debug\MainPage.g.cs
+\\psf\Home\Downloads\Photochooser\Photochooser\obj\Debug\Photochooser.g.resources
+\\psf\Home\Downloads\Photochooser\Photochooser\obj\Debug\Photochooser.Resources.AppResources.resources
+\\psf\Home\Downloads\Photochooser\Photochooser\obj\Debug\Photochooser.csproj.GenerateResource.Cache
+\\psf\Home\Downloads\Photochooser\Photochooser\obj\Debug\Photochooser.dll
+\\psf\Home\Downloads\Photochooser\Photochooser\obj\Debug\Photochooser.pdb
+\\psf\Home\Downloads\Photochooser\Photochooser\obj\Debug\XapCacheFile.xml
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\Assets\ApplicationIcon.png
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\FlipCycleTileLarge.png
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\FlipCycleTileSmall.png
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\IconicTileMediumLarge.png
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\Assets\Tiles\IconicTileSmall.png
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\Photochooser.dll
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\Photochooser.pdb
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\AppManifest.xaml
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\Properties\WMAppManifest.xml
+\\psf\Home\Desktop\Photochooser\Photochooser\Bin\Debug\Photochooser_Debug_AnyCPU.xap
+\\psf\Home\Desktop\Photochooser\Photochooser\obj\Debug\App.g.cs
+\\psf\Home\Desktop\Photochooser\Photochooser\obj\Debug\MainPage.g.cs
+\\psf\Home\Desktop\Photochooser\Photochooser\obj\Debug\Photochooser.g.resources
+\\psf\Home\Desktop\Photochooser\Photochooser\obj\Debug\Photochooser.Resources.AppResources.resources
+\\psf\Home\Desktop\Photochooser\Photochooser\obj\Debug\Photochooser.csproj.GenerateResource.Cache
+\\psf\Home\Desktop\Photochooser\Photochooser\obj\Debug\Photochooser.dll
+\\psf\Home\Desktop\Photochooser\Photochooser\obj\Debug\Photochooser.pdb
+\\psf\Home\Desktop\Photochooser\Photochooser\obj\Debug\XapCacheFile.xml
