@@ -1,0 +1,1 @@
+D:\AdvComp\C# workspace\LazyTodo\LazyTodo\LazyTodo.csproj;neutral
