@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>HP_GO</Machine>
+    <WindowsUser>Aummy</WindowsUser>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>2d8ef851-97ed-4003-9ae3-8849c2bf9586</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\obj\Debug\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\bin\Debug\PhoneJupiter.exe">
+      <PackagePath>PhoneJupiter.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\Assets\Logo.scale-240.png">
+      <PackagePath>Assets\Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\Assets\SmallLogo.scale-240.png">
+      <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\Assets\SplashScreen.scale-240.png">
+      <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\Assets\Square71x71Logo.scale-240.png">
+      <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\Assets\StoreLogo.scale-240.png">
+      <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\Assets\WideLogo.scale-240.png">
+      <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\bin\Debug\PhoneJupiter.xr.xml">
+      <PackagePath>PhoneJupiter.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Aummy\Downloads\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
