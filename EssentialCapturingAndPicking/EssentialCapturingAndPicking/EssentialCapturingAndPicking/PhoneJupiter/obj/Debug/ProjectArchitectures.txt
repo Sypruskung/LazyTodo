@@ -1,1 +1,1 @@
-\\psf\Home\Desktop\EssentialCapturingAndPicking\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\LazyToDo.csproj;neutral
+C:\Users\user\Documents\GitHub\LazyTodo\EssentialCapturingAndPicking\EssentialCapturingAndPicking\EssentialCapturingAndPicking\PhoneJupiter\LazyToDo.csproj;neutral
