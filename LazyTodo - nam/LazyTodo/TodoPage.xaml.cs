@@ -35,6 +35,7 @@ namespace LazyTodo
         private string itemId;
         private Todo item;
 
+
         public TodoPage()
         {
             this.InitializeComponent();
@@ -42,6 +43,9 @@ namespace LazyTodo
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+
+            ToDoStoryboard.Begin();
+
         }
 
         /// <summary>
@@ -77,7 +81,6 @@ namespace LazyTodo
             itemId = (string) e.NavigationParameter;
             item = TodoDataSource.GetTodoFromId(itemId);
             this.DefaultViewModel["Item"] = item;
-
 
         }
 

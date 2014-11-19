@@ -119,6 +119,7 @@ namespace LazyTodo
         {
             if (!NewTodoBox.Text.Equals("")) TodoSource.Add(NewTodoBox.Text);
             NewTodoBox.Text = "";
+           
         }
         private void TodoListView_ItemClick(object sender, ItemClickEventArgs e)
         {
