@@ -1,5 +1,6 @@
 ﻿using LazyTodo.Common;
 using LazyTodo.DataModel;
+using LazyTodo.LazyTodo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,6 +30,7 @@ namespace LazyTodo
     public sealed partial class TodayPage : Page
     {
         private TodoDataSource TodoSource;
+        private LocationDataSource LocationSource;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private readonly ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView("Resources");
@@ -70,10 +72,11 @@ namespace LazyTodo
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session.  The state will be null the first time a page is visited.</param>
-        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            TodoSource = TodoDataSource.getInstance();
+            TodoSource = await TodoDataSource.getInstance();
             this.DefaultViewModel["TodoSource"] = TodoSource;
+            LocationSource = await LocationDataSource.getInstance();
         }
 
         /// <summary>
@@ -115,11 +118,12 @@ namespace LazyTodo
 
         #endregion
 
-        private void NewTodoButton_Click(object sender, RoutedEventArgs e)
+        private async void NewTodoButton_Click(object sender, RoutedEventArgs e)
         {
             if (!NewTodoBox.Text.Equals("")) TodoSource.Add(NewTodoBox.Text);
             NewTodoBox.Text = "";
-           
+            await TodoSource.writeJsonAsync();
+            await TodoSource.readJsonAsync();
         }
         private void TodoListView_ItemClick(object sender, ItemClickEventArgs e)
         {

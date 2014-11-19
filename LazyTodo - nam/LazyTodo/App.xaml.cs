@@ -8,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,6 +29,9 @@ namespace LazyTodo
     {
         private TransitionCollection transitions;
 
+        public event Action<IReadOnlyList<StorageFile>> FilesOpenPicked;
+        public event Action<StorageFile> FileSavePicked;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -36,6 +40,32 @@ namespace LazyTodo
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+        }
+
+        // Entry point for new WP 8.1 Contract-based activation like FileOpenPicker
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            var fopArgs = args as FileOpenPickerContinuationEventArgs;
+            if (fopArgs != null)
+            {
+                // Pass the picked files to the subscribed event handlers
+                // In a real world app you could also use a Messenger, Listener or any other subscriber-based model
+                if (fopArgs.Files.Any() && FilesOpenPicked != null)
+                {
+                    FilesOpenPicked(fopArgs.Files);
+                }
+            }
+
+            var fspArgs = args as FileSavePickerContinuationEventArgs;
+            if (fspArgs != null)
+            {
+                // Pass the picked file to the subscribed event handlers
+                // In a real world app you could also use a Messenger, Listener or any other subscriber-based model
+                if (fspArgs.File != null && FileSavePicked != null)
+                {
+                    FileSavePicked(fspArgs.File);
+                }
+            }
         }
 
         /// <summary>

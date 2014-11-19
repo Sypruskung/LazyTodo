@@ -2,21 +2,14 @@
 using LazyTodo.DataModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Windows.Input;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Graphics.Display;
-using Windows.UI.ViewManagement;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -31,16 +24,28 @@ namespace LazyTodo
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        private static readonly IEnumerable<string> SupportedVideoFileTypes = new List<string> { ".mp4", ".wmv", ".avi" };
+        private static readonly IEnumerable<string> SupportedImageFileTypes = new List<string> { ".jpeg", ".jpg", ".png" };
+
         private string itemId;
+        private Todo item;
 
         public EditPage()
         {
             this.InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Required;
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-            EditStoryBoard.Begin();
+
+            //EditPageStoryBoard.Begin();
+
+            var app = Application.Current as App;
+            if (app != null)
+            {
+                app.FilesOpenPicked += OnFilesOpenPicked;
+            } 
         }
 
         /// <summary>
@@ -49,6 +54,7 @@ namespace LazyTodo
         public NavigationHelper NavigationHelper
         {
             get { return this.navigationHelper; }
+            
         }
 
         /// <summary>
@@ -74,8 +80,15 @@ namespace LazyTodo
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             itemId = (string)e.NavigationParameter;
-            Todo item = TodoDataSource.GetTodoFromId(itemId);
-            this.DefaultViewModel["Item"] = item;
+            item = TodoDataSource.GetTodoFromId(itemId);
+
+            this.DefaultViewModel["ItemToEdit"] = item;
+
+            Debug.WriteLine(item.Attachments.Count);
+
+            MyDatePicker.Date = item.TodoDateTime.Date;
+            MyTimePicker.Time = item.TodoDateTime.TimeOfDay;
+
         }
 
         /// <summary>
@@ -117,16 +130,76 @@ namespace LazyTodo
 
         #endregion
 
-        private void DoneButton_Click(object sender, RoutedEventArgs e)
+        private async void DoneButton_Click(object sender, RoutedEventArgs e)
         {
             DateTimeOffset date = MyDatePicker.Date;
             TimeSpan time = MyTimePicker.Time;
             DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
-        }
 
+            item.TodoTitle = TitleBox.Text;
+            item.TodoDateTime = dateTime;
+            item.Description = DescriptionBox.Text;
+            
+            //Debug.WriteLine(dateTime);
+
+            await TodoDataSource.writeToFile();
+
+            this.Frame.GoBack();
+        }
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Frame.GoBack();
+        }
+        private void AddMediaButton_Click(object sender, RoutedEventArgs e)
+        {
+            TriggerPicker(SupportedImageFileTypes.Union(SupportedVideoFileTypes));
+        }
+
+        private async void UpdateMediaImage()
+        {
+            ObservableCollection<BitmapImage> BitmapImageAttached = new ObservableCollection<BitmapImage>();
+            foreach (MyMedia myMedia in item.Attachments)
+            {
+                BitmapImage bitmapImage = new BitmapImage();
+                if (myMedia.myMediaType == MyMedia.MyMediaType.Image)
+                {
+                    //StorageFile file = await MyMedia.getFileFromUriAsync(/*myMedia.fileUri*/);
+                    //var stream = await file.OpenReadAsync();
+                    //bitmapImage.SetSource(stream);
+                    //stream.Dispose();
+                }
+                else
+                {
+                    bitmapImage.UriSource = new Uri(this.BaseUri, "Assets/DarkGray.png");
+                }
+            }
+            this.defaultViewModel["AttachedImages"] = BitmapImageAttached;
+        }
+
+
+        /** file picker + camera **/
+        private void OnFilesOpenPicked(IReadOnlyList<StorageFile> files)
+        {
+            foreach (StorageFile file in files)
+            {
+                if (file != null)
+                {
+                    item.AddMedia(file, this.BaseUri);
+                    UpdateMediaImage();
+                }
+            }
 
         }
+        private static void TriggerPicker(IEnumerable<string> fileTypeFilters)
+        {
+            var fileOpenPicker = new FileOpenPicker();
+
+            foreach (var fileType in fileTypeFilters)
+            {
+                fileOpenPicker.FileTypeFilter.Add(fileType);
+            }
+            fileOpenPicker.PickMultipleFilesAndContinue();
+        }
+
     }
 }

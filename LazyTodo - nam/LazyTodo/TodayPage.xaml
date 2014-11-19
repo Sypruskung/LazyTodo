@@ -12,8 +12,6 @@
 
     <Grid x:Name="LayoutRoot">
 
-        
-
         <!--TODO: Content should be placed within the following grid-->
         <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
 
@@ -49,7 +47,7 @@
                     x:Name="TodoListView"
                     IsItemClickEnabled="True"
                     ItemClick="TodoListView_ItemClick"
-                    ItemsSource="{Binding TodoCollection}">
+                    ItemsSource="{Binding CreatedTodo}">
                     <ListView.Header>
                         <StackPanel Orientation="Vertical">
                             <TextBlock 

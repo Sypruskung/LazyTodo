@@ -1,1 +1,1 @@
-\\psf\Home\Desktop\LazyTodo 2\LazyTodo - nam\LazyTodo\LazyTodo.csproj;neutral
+C:\Users\user\Desktop\LazyTodo\LazyTodo\LazyTodo.csproj;neutral

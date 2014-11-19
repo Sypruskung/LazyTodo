@@ -8,34 +8,35 @@
     mc:Ignorable="d"
     DataContext="{Binding DefaultViewModel.Item, RelativeSource={RelativeSource Self}}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-	<Page.Resources>
-		<Storyboard x:Name="ToDoStoryboard">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="top_stack">
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="257.407"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="top_stack">
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="9.259"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ContentRoot">
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="-412.963"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ContentRoot">
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="-9.259"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="edit_grid">
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="248.148"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="edit_grid">
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="-1.852"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
-	</Page.Resources>
+    
+    <Page.Resources>
+    	<Storyboard x:Name="ToDoStoryBoard">
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ContentRoot">
+    			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-403.03"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ContentRoot">
+    			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-1.515"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="AppBar">
+    			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="248.485"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="AppBar">
+    			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="1.515"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="TopPanel">
+    			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="418.182"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="TopPanel">
+    			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="3.03"/>
+    		</DoubleAnimationUsingKeyFrames>
+    	</Storyboard>
+    </Page.Resources>
 
     <Grid x:Name="LayoutRoot">
 
@@ -52,96 +53,92 @@
         </Grid.RowDefinitions>
 
         <!-- Title Panel -->
-        <StackPanel x:Name="top_stack" Grid.Row="0" Margin="-248,-10,267,10.167" RenderTransformOrigin="0.5,0.5">
+        <StackPanel x:Name="TopPanel" Grid.Row="0" Margin="-408,5,427,427.667" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
         	<StackPanel.RenderTransform>
         		<CompositeTransform/>
         	</StackPanel.RenderTransform>
-            <TextBlock x:Name="lazytodo" Text="LazyTODO" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,-1.167,0"/>
-            <TextBlock x:Name="todo_title" Text="Todo Title" Margin="0,-6.5,-7.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock 
+                Text="LazyTODO" 
+                Style="{ThemeResource TitleTextBlockStyle}" 
+                Margin="0,12,0,0"/>
+            <TextBlock 
+                Text="{Binding TodoTitle}" 
+                Margin="0,-6.5,0,26.5" 
+                Style="{ThemeResource HeaderTextBlockStyle}" 
+                CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <ScrollViewer x:Name="ContentRoot" Margin="409,8.833,-409,1" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+        <ScrollViewer x:Name="ContentRoot" Margin="400,100,-400,3.667" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
         	<ScrollViewer.RenderTransform>
         		<CompositeTransform/>
         	</ScrollViewer.RenderTransform>
             <StackPanel>
+                
                 <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                	<StackPanel Orientation="Horizontal" >
-                		<Image 
-                			Margin="10, 0"
-                			Height="100"
-                			Width="100" 
-                			Source="Assets/SmallLogo.png"/>
-                		<Grid Margin="10, 0">
-                			<Image  
-                				Height="100"
-                				Width="100" 
-                				Source="Assets/SmallLogo.png"/>
-                			<MediaElement 
-                				x:Name="myMediaElement"
-                				Height="100" 
-                				Width="100" 
-                				Source="/Assets/scream.wav"
-                				AutoPlay="False"/>
-                			<Button 
-                				BorderThickness="0"
-                				HorizontalAlignment="Left" 
-                				VerticalAlignment="Center"
-                				Width="100"
-                				Height="100"/>
-                		</Grid>
-                		<Image 
-                			Margin="10, 0"
-                			Height="100"
-                			Width="100" 
-                			Source="Assets/SmallLogo.png"/>
-                		<Image 
-                			Margin="10, 0"
-                			Height="100"
-                			Width="100" 
-                			Source="Assets/SmallLogo.png"/>
-                		<Image 
-                			Margin="10, 0"
-                			Height="100"
-                			Width="100" 
-                			Source="Assets/SmallLogo.png"/>
-                	</StackPanel>
+
+                    <ListView x:Name="AttachmentListView" ItemsSource="{Binding Attachments}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="20,5,0,5">
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="DarkOrchid"/>
+                                    </Grid.Background>
+                                    <Image  
+                                        Height="100"
+                                        Width="100" 
+                                        Source="{Binding}"/>
+                                    <MediaElement 
+                                        Height="100" 
+                                        Width="100" 
+                                        Source="/Assets/scream.wav"
+                                        AutoPlay="False"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
                 </ScrollViewer>
+                
                 <StackPanel Margin="20">
-                	<StackPanel Margin="0,0,0,20">
-                		<TextBlock x:Name="when" 
-                			Text="When" 
-                			TextWrapping="Wrap" 
-                			Style="{StaticResource SubheaderTextBlockStyle}"/>
-                		<TextBlock x:Name="when_textblock" 
-                			Margin="10"
-                			TextWrapping="Wrap"
-                			Text="{Binding TodoDateTime}" 
-                			Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
-                	</StackPanel>
-                	<StackPanel Margin="0,0,0,20">
-                		<TextBlock x:Name="where" 
-                			Text="Where"
-                			TextWrapping="Wrap"
-                			Style="{StaticResource SubheaderTextBlockStyle}"/>
-                		<TextBlock x:Name="where_textblock" 
-                			Margin="10"
-                			Text="Chulalongkorn University" 
-                			TextWrapping="Wrap" 
-                			Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
-                	</StackPanel>
-                	<StackPanel Margin="0,0,0,20">
-                		<TextBlock x:Name="description" 
-                			Text="Description"
-                			TextWrapping="Wrap"
-                			Style="{StaticResource SubheaderTextBlockStyle}"/>
-                		<TextBlock x:Name="description_textblock" 
-                			Margin="10"
-                			TextWrapping="Wrap" 
-                			Text="{Binding Description}" 
-                			Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
-                	</StackPanel>
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock 
+                            Text="When" 
+                            TextWrapping="Wrap" 
+                            Style="{StaticResource SubheaderTextBlockStyle}"/>
+                        <TextBlock 
+                            Margin="10"
+                            TextWrapping="Wrap"
+                            Text="{Binding TodoDateTime}" 
+                            Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock 
+                            Text="Where"
+                            TextWrapping="Wrap"
+                            Style="{StaticResource SubheaderTextBlockStyle}"/>
+                        <TextBlock 
+                            Margin="10"
+                            Text="Chulalongkorn University" 
+                            TextWrapping="Wrap" 
+                            Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock 
+                            Text="Description"
+                            TextWrapping="Wrap"
+                            Style="{StaticResource SubheaderTextBlockStyle}"/>
+                        <TextBlock 
+                            Margin="10"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Description}" 
+                            Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                    </StackPanel>
                     
                 </StackPanel>
                 
@@ -149,7 +146,7 @@
         </ScrollViewer>
         
         <!-- App Bar -->
-        <Grid x:Name="edit_grid" Grid.Row="1" Margin="-249,431.833,249,1" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+        <Grid x:Name="AppBar"  Grid.Row="2" Margin="-247,0.333,247,0" RenderTransformOrigin="0.5,0.5">
         	<Grid.RenderTransform>
         		<CompositeTransform/>
         	</Grid.RenderTransform>

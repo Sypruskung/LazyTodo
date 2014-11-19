@@ -1,22 +1,11 @@
 ﻿using LazyTodo.Common;
 using LazyTodo.DataModel;
+using LazyTodo.LazyTodo;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Graphics.Display;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -35,7 +24,6 @@ namespace LazyTodo
         private string itemId;
         private Todo item;
 
-
         public TodoPage()
         {
             this.InitializeComponent();
@@ -44,8 +32,8 @@ namespace LazyTodo
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
-            ToDoStoryboard.Begin();
-
+            ToDoStoryBoard.Begin();
+            Debug.WriteLine("================== Todo Constructor Entered");
         }
 
         /// <summary>
@@ -76,12 +64,14 @@ namespace LazyTodo
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session.  The state will be null the first time a page is visited.</param>
-        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             itemId = (string) e.NavigationParameter;
+            await TodoDataSource.getInstance();
             item = TodoDataSource.GetTodoFromId(itemId);
             this.DefaultViewModel["Item"] = item;
-
+            Debug.WriteLine("================== Todo LoadState Entered");
+            await LocationDataSource.getInstance();
         }
 
         /// <summary>
