@@ -1,5 +1,6 @@
 ﻿using LazyTodo.Common;
 using LazyTodo.DataModel;
+using LazyTodo.LazyTodo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,6 +30,8 @@ namespace LazyTodo
 
         private string itemId;
         private Todo item;
+        private ObservableCollection<string> Suggestions = new ObservableCollection<string>();
+        List<Location> predictions;
 
         public EditPage()
         {
@@ -83,6 +86,7 @@ namespace LazyTodo
             item = TodoDataSource.GetTodoFromId(itemId);
 
             this.DefaultViewModel["ItemToEdit"] = item;
+            this.defaultViewModel["Suggestions"] = Suggestions;
 
             Debug.WriteLine(item.Attachments.Count);
 
@@ -199,6 +203,32 @@ namespace LazyTodo
                 fileOpenPicker.FileTypeFilter.Add(fileType);
             }
             fileOpenPicker.PickMultipleFilesAndContinue();
+        }
+
+        private async void PlaceSearchBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                Suggestions.Clear();
+
+                LocationDataSource locationDataSource = await LocationDataSource.getInstance(false);
+                predictions = await locationDataSource.GetPredictionAsync(sender.Text);
+                //SortedSet<Location> placesNearBy = locationDataSource.PlacesNearBy;
+                foreach (Location place in predictions)
+                {
+                    Suggestions.Add(place.Name);
+                }
+            }
+        }
+
+        private void PlaceSearchBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            Debug.WriteLine("===============suggestionchosen");
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }

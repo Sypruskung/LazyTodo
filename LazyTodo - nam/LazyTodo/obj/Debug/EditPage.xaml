@@ -3,10 +3,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LazyTodo"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding DefaultViewModel.ItemToEdit, RelativeSource={RelativeSource Self}}" 
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}" 
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 	<Page.Resources>
 
@@ -53,7 +57,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
+        
         <!-- Title Panel -->
         <StackPanel x:Name="stackPanel" 
             Grid.Row="0" Margin="20">
@@ -66,7 +70,7 @@
                 Margin="0,12,0,0"/>
             <TextBox 
                 x:Name="TitleBox"
-                Text="{Binding TodoTitle}" 
+                Text="{Binding ItemToEdit.TodoTitle}" 
                 Margin="0,10,0,26.5"/>
         </StackPanel>
 
@@ -82,7 +86,7 @@
                     HorizontalScrollBarVisibility="Auto">
 
                 	<StackPanel Orientation="Horizontal">
-                		<Button x:ConnectionId='3'
+                		<Button x:ConnectionId='5'
                 			Margin="20, 5, 0, 5"
                 			Width="100"
                 			Height="100" 
@@ -90,8 +94,8 @@
                 			BorderThickness="0" Background="DarkCyan">
                 			<TextBlock Text="AddMedia"/>
                 		</Button>
-                    
-                		<ListView x:Name="AttachmentListView" ItemsSource="{Binding}">
+
+                        <ListView x:Name="AttachmentListView" ItemsSource="{Binding ItemToEdit.Attachments}">
                         
                 			<ListView.ItemsPanel>
                 				<ItemsPanelTemplate>
@@ -146,18 +150,36 @@
                                 ClockIdentifier="24HourClock" 
                                 Grid.Column="1"/>
                         </Grid>
-                        
                     </StackPanel>
                     <StackPanel Margin="0,0,0,20">
                         <TextBlock 
                             Text="Where"
                             TextWrapping="Wrap"
                             Style="{StaticResource SubheaderTextBlockStyle}"/>
-                        <TextBlock 
-                            Margin="10"
-                            Text="Chulalongkorn University"
-                            TextWrapping="Wrap" 
-                            Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <AutoSuggestBox x:ConnectionId='3'
+                                x:Name="PlaceSearchBox"
+                                Grid.Column="0"
+                                                                        
+                                                                                  
+                                ItemsSource="{Binding Suggestions}">
+                                <AutoSuggestBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}"/>
+                                    </DataTemplate>
+                                </AutoSuggestBox.ItemTemplate>
+                            </AutoSuggestBox>
+                            <AppBarButton x:ConnectionId='4' 
+                                x:Name="SearchButton" 
+                                Grid.Column="1"
+                                Icon="Find" 
+                                Label="Search" 
+                                                          />
+                        </Grid>
                     </StackPanel>
                     <StackPanel Margin="0,0,0,20">
                         <TextBlock 
@@ -169,7 +191,7 @@
                             Margin="0, 10"
                             Height="100"
                             TextWrapping="Wrap" 
-                            Text="{Binding Description}"/>
+                            Text="{Binding ItemToEdit.Description}"/>
                     </StackPanel>
 
                 </StackPanel>

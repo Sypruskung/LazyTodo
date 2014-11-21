@@ -71,7 +71,7 @@ namespace LazyTodo
             item = TodoDataSource.GetTodoFromId(itemId);
             this.DefaultViewModel["Item"] = item;
             Debug.WriteLine("================== Todo LoadState Entered");
-            await LocationDataSource.getInstance();
+            await LocationDataSource.getInstance(true);
         }
 
         /// <summary>

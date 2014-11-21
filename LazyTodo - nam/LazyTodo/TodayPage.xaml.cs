@@ -76,7 +76,7 @@ namespace LazyTodo
         {
             TodoSource = await TodoDataSource.getInstance();
             this.DefaultViewModel["TodoSource"] = TodoSource;
-            LocationSource = await LocationDataSource.getInstance();
+            LocationSource = await LocationDataSource.getInstance(true);
         }
 
         /// <summary>

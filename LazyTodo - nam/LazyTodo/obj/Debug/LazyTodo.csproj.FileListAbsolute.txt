@@ -50,20 +50,10 @@ D:\AdvComp\C# workspace\LazyTodo\LazyTodo\obj\Debug\TodoPage.g.i.cs
 D:\AdvComp\C# workspace\LazyTodo\LazyTodo\obj\Debug\TodoPage.g.cs
 D:\AdvComp\C# workspace\LazyTodo\LazyTodo\obj\Debug\TodoPage.xaml
 D:\AdvComp\C# workspace\LazyTodo\LazyTodo\obj\Debug\TodoPage.xbf
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\App.xbf
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\HubPage.xbf
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\ItemPage.xbf
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\SectionPage.xbf
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\TodayPage.xbf
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\TodoPage.xbf
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\LazyTodo.xr.xml
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\LazyTodo.exe
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\LazyTodo.pdb
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\resources.pri
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\AppxManifest.xml
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\LazyTodo.build.appxrecipe
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\App.g.i.cs
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\App.g.cs
+C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\EditPage.g.i.cs
+C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\EditPage.g.cs
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\HubPage.g.i.cs
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\HubPage.g.cs
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\ItemPage.g.i.cs
@@ -88,6 +78,21 @@ C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\SectionPage.xbf
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\TodayPage.xbf
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\TodoPage.xbf
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\XamlSaveStateFile.xml
+C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\EditPage.xaml
+C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\EditPage.xbf
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\App.xbf
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\EditPage.xbf
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\HubPage.xbf
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\ItemPage.xbf
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\SectionPage.xbf
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\TodayPage.xbf
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\TodoPage.xbf
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\LazyTodo.xr.xml
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\LazyTodo.exe
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\LazyTodo.pdb
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\resources.pri
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\AppxManifest.xml
+C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\LazyTodo.build.appxrecipe
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\LazyTodo.exe
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\LazyTodo.pdb
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\priconfig.xml
@@ -102,8 +107,3 @@ C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\qualifiers.txt
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\qualifiers.txt.intermediate
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\ProjectArchitectures.txt
-C:\Users\user\Desktop\LazyTodo\LazyTodo\bin\Debug\EditPage.xbf
-C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\EditPage.g.i.cs
-C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\EditPage.g.cs
-C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\EditPage.xaml
-C:\Users\user\Desktop\LazyTodo\LazyTodo\obj\Debug\EditPage.xbf

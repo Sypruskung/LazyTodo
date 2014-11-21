@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Devices.Geolocation;
 
 namespace LazyTodo
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    
 
     namespace LazyTodo
     {
@@ -30,6 +24,13 @@ namespace LazyTodo
                 {
                     return GetDistanceTo(LocationDataSource._locationDataSource.CurrentLocation);
                 }
+            }
+            public Location(String name, String uniqueId)
+            {
+                this.Name = name;
+                this.UniqueId = uniqueId;
+                this.Latitude = 0;
+                this.Longitude = 0;
             }
             public Location(Double latitude, Double longitude)
             {
@@ -95,10 +96,54 @@ namespace LazyTodo
             {
                 get { return this._placesNearBy; }
             }
-            public async Task GetPlacesAsync()
+            public async Task<List<Location>> GetPredictionAsync(string input)
+            {
+                string response = await ReadPredictionJsonAsync(this.CurrentLocation, input);
+                Debug.WriteLine(response);
+
+                JsonObject jsonResult = JsonObject.Parse(response);
+                JsonArray places = jsonResult["predictions"].GetArray();
+
+                List<Location> predictions = new List<Location>();
+
+                foreach (JsonValue place in places)
+                {
+                    JsonObject placeObject = place.GetObject();
+                    string description = placeObject["description"].GetString();
+                    //Debug.WriteLine(name);
+                    string uniqueId = placeObject["place_id"].GetString();
+                    //Debug.WriteLine(uniqueId);
+
+                    Location location = new Location(description, uniqueId);
+
+                    predictions.Add(location);
+                }
+
+                return predictions;
+
+            }
+            public async Task<string> ReadPredictionJsonAsync(Location location, string input)
+            {
+                return await ReadPredictionJsonAsync(location.Latitude, location.Longitude, input);
+            }
+            public async Task<string> ReadPredictionJsonAsync(double latitude, double longitude, string inputString)
+            {
+                string jsonURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json";
+                string APIKey = "key=AIzaSyBf2rgSAk4ZHmNn_rylKZbUx4wsQ1aGrhI";
+                string location = "location=" + latitude + "%2C" + longitude;
+                string radius = "radius=10000";
+                string input = "input=" + inputString;
+
+                HttpClient client = new HttpClient();
+                var resource = await client.GetAsync(new Uri(jsonURL + "?" + APIKey + "&" + input + "&" + location + "&" + radius));
+                var response = await resource.Content.ReadAsStringAsync();
+
+                return response;
+            }
+            public async Task GetNearByPlacesAsync()
             {
                 await GetCurrentLocation();
-                string response = await ReadJsonFromGoogleAsync(this.CurrentLocation);
+                string response = await ReadNearByJsonAsync(this.CurrentLocation);
 
                 JsonObject jsonResult = JsonObject.Parse(response);
                 JsonArray places = jsonResult["results"].GetArray();
@@ -122,6 +167,23 @@ namespace LazyTodo
                     this._placesNearBy.Add(location);
                 }
             }
+            public async Task<string> ReadNearByJsonAsync(Location location)
+            {
+                return await ReadNearByJsonAsync(location.Latitude, location.Longitude);
+            }
+            public async Task<string> ReadNearByJsonAsync(double latitude, double longitude)
+            {
+                string jsonURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
+                string APIKey = "key=AIzaSyBf2rgSAk4ZHmNn_rylKZbUx4wsQ1aGrhI";
+                string location = "location=" + latitude + "%2C" + longitude;
+                string radius = "radius=10000";
+
+                HttpClient client = new HttpClient();
+                var resource = await client.GetAsync(new Uri(jsonURL + "?" + APIKey + "&" + location + "&" + radius));
+                var response = await resource.Content.ReadAsStringAsync();
+
+                return response;
+            }
             public async Task GetCurrentLocation()
             {
                 //Current Location
@@ -136,30 +198,14 @@ namespace LazyTodo
 
                 this.CurrentLocation = new Location(latitude, longitude);
             }
-            public async Task<string> ReadJsonFromGoogleAsync(Location location)
-            {
-                return await ReadJsonFromGoogleAsync(location.Latitude, location.Longitude);
-            }
-            public async Task<string> ReadJsonFromGoogleAsync(double latitude, double longitude)
-            {
-                string jsonURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
-                string location = "location=" + latitude + "%2C" + longitude;
-                string radius = "radius=10000";
-                string APIKey = "key=AIzaSyBf2rgSAk4ZHmNn_rylKZbUx4wsQ1aGrhI";
-
-                HttpClient client = new HttpClient();
-                var resource = await client.GetAsync(new Uri(jsonURL + "?" + location + "&" + radius + "&" + APIKey));
-                var response = await resource.Content.ReadAsStringAsync();
-
-                return response;
-            }
+            
 
             /** static **/
             public static LocationDataSource _locationDataSource = new LocationDataSource();
-            public async static Task<LocationDataSource> getInstance()
+            public async static Task<LocationDataSource> getInstance(bool forceUpdate)
             {
-                //if (_locationDataSource._placesNearBy.Count == 0)
-                await _locationDataSource.GetPlacesAsync();
+                await _locationDataSource.GetCurrentLocation();
+                //if (forceUpdate) await _locationDataSource.GetNearByPlacesAsync();
                 foreach (Location location in _locationDataSource.PlacesNearBy)
                 {
                     Debug.WriteLine(location);
