@@ -14,10 +14,11 @@ namespace LazyTodo
     {
         public class Location : IComparable<Location>
         {
-            public string Name { get; private set; }
-            public string UniqueId { get; private set; }
-            public double Latitude { get; private set; }
-            public double Longitude { get; private set; }
+            public string Name { get; set; }
+            public string UniqueId { get; set; }
+            public string Address { get; set; }
+            public double Latitude { get; set; }
+            public double Longitude { get; set; }
             public double Distance 
             { 
                 get 
@@ -25,30 +26,42 @@ namespace LazyTodo
                     return GetDistanceTo(LocationDataSource._locationDataSource.CurrentLocation);
                 }
             }
+            public Location()
+            {
+                this.Name = "";
+                this.UniqueId = "";
+                this.Address = "";
+                this.Latitude = 0;
+                this.Longitude = 0;
+            }
             public Location(String name, String uniqueId)
             {
                 this.Name = name;
                 this.UniqueId = uniqueId;
+                this.Address = "";
                 this.Latitude = 0;
                 this.Longitude = 0;
             }
             public Location(Double latitude, Double longitude)
             {
                 this.Name = "@ " + latitude + ", " + longitude;
+                this.Address = "";
                 this.Latitude = latitude;
                 this.Longitude = longitude;
                 this.UniqueId = "" + Guid.NewGuid();
             }
-            public Location(String name, String uniqueId, Double latitude, Double longitude)
+            public Location(String name, String uniqueId, String address, Double latitude, Double longitude)
             {
                 this.Name = name;
                 this.UniqueId = uniqueId;
+                this.Address = address;
                 this.Latitude = latitude;
                 this.Longitude = longitude;
             }
             public override string ToString()
             {
                 string s = "Name: " + this.Name + ",  " +
+                            "Address: " + this.Address + ", " +
                             "UniqueId: " + this.UniqueId + ",  " +
                             "Coordinate: @" + this.Latitude + ", " + this.Longitude;
                 return s;
@@ -162,7 +175,7 @@ namespace LazyTodo
                     string uniqueId = placeObject["place_id"].GetString();
                     //Debug.WriteLine(uniqueId);
 
-                    Location location = new Location(name, uniqueId, latitude, longitude);
+                    Location location = new Location(name, uniqueId, "", latitude, longitude);
 
                     this._placesNearBy.Add(location);
                 }
@@ -211,6 +224,31 @@ namespace LazyTodo
                     Debug.WriteLine(location);
                 }
                 return _locationDataSource;
+            }
+            public static async Task<Location> GetLocationFromId(string id)
+            {
+                string jsonURL = "https://maps.googleapis.com/maps/api/place/details/json";
+                string APIKey = "key=AIzaSyBf2rgSAk4ZHmNn_rylKZbUx4wsQ1aGrhI";
+                string placeId = "placeid=" + id;
+
+                HttpClient cliend = new HttpClient();
+                var resource = await cliend.GetAsync(new Uri(jsonURL + "?" + APIKey + "&" + placeId));
+                var response = await resource.Content.ReadAsStringAsync();
+
+                JsonObject jsonResult = JsonObject.Parse(response);
+                JsonObject placeDetail = jsonResult["result"].GetObject();
+
+                string name = placeDetail["name"].GetString();
+                Debug.WriteLine(name);
+                JsonObject placeLocation = placeDetail["geometry"].GetObject()["location"].GetObject();
+                double latitude = placeLocation["lat"].GetNumber();
+                double longitude = placeLocation["lng"].GetNumber();
+
+                string address = placeDetail.GetNamedString("formatted_address", "");
+
+                Location location = new Location(name, id, address, latitude, longitude);
+                return location;
+
             }
         }
     }

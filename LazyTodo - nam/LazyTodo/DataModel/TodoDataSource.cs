@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LazyTodo.LazyTodo;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -70,16 +71,21 @@ namespace LazyTodo.DataModel
     }
     public class Todo : IComparable<Todo>
     {
+        public bool Done { get; set; }
         public string UniqueId { get; set; }
         public string TodoTitle { get; set; }
         public ObservableCollection<MyMedia> Attachments { get; set; }
         public DateTime TodoDateTime { get; set; }
+        public Location TodoLocation { get; set; }
         public string Description { get; set; }
         public Todo()
         {
             this.UniqueId = "";
             this.TodoTitle = "";
+            this.Attachments = new ObservableCollection<MyMedia>();
+            this.TodoLocation = new Location();
             this.Description = "";
+            this.Done = false;
         }
         public Todo(string title)
         {
@@ -89,7 +95,9 @@ namespace LazyTodo.DataModel
             this.TodoTitle = title;
             this.Attachments = new ObservableCollection<MyMedia>();
             this.TodoDateTime = new DateTime(2014, 11, 28, 10, 20, 30);
+            this.TodoLocation = new Location();
             this.Description = "this is the description";
+            this.Done = false;
         }
         public void AddMedia(StorageFile file, Uri baseUri)
         {
@@ -98,7 +106,6 @@ namespace LazyTodo.DataModel
             MyMedia myMedia = new MyMedia(file);
             myMedia.SetImageSource(baseUri);
             this.Attachments.Add(myMedia);
-            /*this.NotifyPropertyChanged("Attachments");*/
         }
         public int CompareTo(Todo other)
         {
@@ -117,18 +124,6 @@ namespace LazyTodo.DataModel
         {
             get { return this._createdTodo; }
             private set { }
-        }
-        public TodoDataSource()
-        {
-            /*
-            for (int i = 1; i <= 5; i++)
-            {
-                Todo todo = new Todo("My New Todo " + i);
-                //StorageFile.New;
-                //todo.AddMedia();
-                _todoCollection.Add(todo);
-            }
-             */ 
         }
         public void Add(string title)
         {

@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding DefaultViewModel.TodoSource, 
+    DataContext="{Binding DefaultViewModel.TodoCollection, 
                     RelativeSource={RelativeSource Self}}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -47,7 +47,7 @@
                     x:Name="TodoListView"
                     IsItemClickEnabled="True"
                                                       
-                    ItemsSource="{Binding CreatedTodo}">
+                    ItemsSource="{Binding}">
                     <ListView.Header>
                         <StackPanel Orientation="Vertical">
                             <TextBlock 

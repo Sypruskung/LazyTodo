@@ -69,7 +69,7 @@
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <ScrollViewer x:Name="ContentRoot" Margin="400,100,-400,3.667" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+        <ScrollViewer x:Name="ContentRoot" Margin="400,120,-400,3.667" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
         	<ScrollViewer.RenderTransform>
         		<CompositeTransform/>
         	</ScrollViewer.RenderTransform>
@@ -123,8 +123,14 @@
                             TextWrapping="Wrap"
                             Style="{StaticResource SubheaderTextBlockStyle}"/>
                         <TextBlock 
-                            Margin="10"
-                            Text="Chulalongkorn University" 
+                            Margin="10, 10, 10, 0"
+                            Text="{Binding TodoLocation.Name}" 
+                            TextWrapping="Wrap" 
+                            FontWeight="Bold"
+                            Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                        <TextBlock 
+                            Margin="10, 0, 10, 10"
+                            Text="{Binding TodoLocation.Address}" 
                             TextWrapping="Wrap" 
                             Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
                     </StackPanel>

@@ -5,6 +5,7 @@
     <RootPropertyPathName Name="ItemToEdit" />
     <RootPropertyPathName Name="Description" />
     <RootPropertyPathName Name="Suggestions" />
+    <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="Attachments" />
     <RootPropertyPathName Name="TodoTitle" />
     <RootPropertyPathName Name="Subtitle" />
@@ -14,9 +15,10 @@
     <RootPropertyPathName Name="Items" />
     <RootPropertyPathName Name="Item" />
     <RootPropertyPathName Name="Group" />
-    <RootPropertyPathName Name="TodoSource" />
-    <RootPropertyPathName Name="CreatedTodo" />
+    <RootPropertyPathName Name="TodoCollection" />
     <RootPropertyPathName Name="UniqueId" />
+    <RootPropertyPathName Name="TodoLocation" />
+    <RootPropertyPathName Name="Address" />
     <RootPropertyPathName Name="TodoDateTime" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -63,15 +65,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="RenderTransform" />
-      <RootProperty Name="Children" />
-      <RootProperty Name="Orientation" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="RenderTransformOrigin" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="RenderTransform" />
@@ -80,6 +73,15 @@
       <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.CompositeTransform" />
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="RenderTransform" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="RenderTransformOrigin" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
@@ -93,6 +95,7 @@
       <RootProperty Name="Foreground" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="CharacterSpacing" />
+      <RootProperty Name="FontWeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Margin" />

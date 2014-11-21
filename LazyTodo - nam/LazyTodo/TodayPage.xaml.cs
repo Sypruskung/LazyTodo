@@ -35,6 +35,8 @@ namespace LazyTodo
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private readonly ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView("Resources");
 
+        private ObservableCollection<Todo> todoCollection = new ObservableCollection<Todo>();
+
         public TodayPage()
         {
             this.InitializeComponent();
@@ -75,7 +77,14 @@ namespace LazyTodo
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             TodoSource = await TodoDataSource.getInstance();
-            this.DefaultViewModel["TodoSource"] = TodoSource;
+
+            todoCollection.Clear();
+            foreach (var todo in TodoSource.CreatedTodo)
+            {
+                todoCollection.Add(todo);
+            }
+            this.DefaultViewModel["TodoCollection"] = todoCollection;
+
             LocationSource = await LocationDataSource.getInstance(true);
         }
 
@@ -124,6 +133,13 @@ namespace LazyTodo
             NewTodoBox.Text = "";
             await TodoSource.writeJsonAsync();
             await TodoSource.readJsonAsync();
+
+            todoCollection.Clear();
+            foreach (var todo in TodoSource.CreatedTodo)
+            {
+                todoCollection.Add(todo);
+            }
+            this.DefaultViewModel["TodoCollection"] = todoCollection;
         }
         private void TodoListView_ItemClick(object sender, ItemClickEventArgs e)
         {

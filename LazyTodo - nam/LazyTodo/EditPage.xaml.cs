@@ -30,8 +30,9 @@ namespace LazyTodo
 
         private string itemId;
         private Todo item;
-        private ObservableCollection<string> Suggestions = new ObservableCollection<string>();
-        List<Location> predictions;
+        private ObservableCollection<Location> Suggestions = new ObservableCollection<Location>();
+        private List<Location> predictions = new List<Location>();
+        private Location location;
 
         public EditPage()
         {
@@ -93,6 +94,12 @@ namespace LazyTodo
             MyDatePicker.Date = item.TodoDateTime.Date;
             MyTimePicker.Time = item.TodoDateTime.TimeOfDay;
 
+            location = item.TodoLocation;
+            if (!location.Equals(null))
+                PlaceSearchBox.Text = item.TodoLocation.Name;
+            else
+                PlaceSearchBox.Text = "";
+            
         }
 
         /// <summary>
@@ -143,6 +150,7 @@ namespace LazyTodo
             item.TodoTitle = TitleBox.Text;
             item.TodoDateTime = dateTime;
             item.Description = DescriptionBox.Text;
+            item.TodoLocation = location;
             
             //Debug.WriteLine(dateTime);
 
@@ -212,18 +220,22 @@ namespace LazyTodo
                 Suggestions.Clear();
 
                 LocationDataSource locationDataSource = await LocationDataSource.getInstance(false);
+
+                predictions.Clear();
                 predictions = await locationDataSource.GetPredictionAsync(sender.Text);
-                //SortedSet<Location> placesNearBy = locationDataSource.PlacesNearBy;
+
                 foreach (Location place in predictions)
                 {
-                    Suggestions.Add(place.Name);
+                    Suggestions.Add(place);
                 }
             }
         }
 
-        private void PlaceSearchBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        private async void PlaceSearchBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            Debug.WriteLine("===============suggestionchosen");
+            Location chosenLocation = args.SelectedItem as Location;
+            PlaceSearchBox.Text = chosenLocation.Name;
+            location = await LocationDataSource.GetLocationFromId(chosenLocation.UniqueId);
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
